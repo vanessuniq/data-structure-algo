@@ -32,26 +32,29 @@ Only one valid answer exists.
 
 /*
    Solution:
+   since we want the index of two elements witch sum = target,
+   we basicaly need to loop over the array and search the diff of target and elemt at position i.
 
+   we will need an object that keep track of visited element.
 
+    1- define a map that will save the nums element and its respective index in a k,v pair
+    2- loop over nums and search the diff of target and the elmt at position i
+    3 - if that element is already a key of our map, return its index and the current i value of the loop
+    4- else add the element and i value as the k,v pair to the map and continue
+
+    Time and space complexity O(n)
  */
 
 const twoSum = function(nums, target) {
-    let start = 0;
+    let map = new Map();
 
-    function findIndices() {
-        for (let i = start + 1; i < nums.length; i++) {
-            const diff = target - nums[start]
-            if (nums[i] === diff) {
-                return [start, i]
-            }
-        };
-        start++
-        if (start < nums.length) {
-            findIndices()
+    for (let i = 0; i < nums.length; i++) {
+        const diff = target - nums[i];
+        if (map.has(diff)) {
+            return [map.get(diff), i];
         }
-    };
+        map.set(nums[i], i);
+    }
 
-    return findIndices()
 
 };
