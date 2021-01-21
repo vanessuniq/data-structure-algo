@@ -25,14 +25,21 @@ Output: 0
 
 Constraints:
 
--231 <= x <= 231 - 1
+-2^31 <= x <= 2^31 - 1
  */
 
 /*
    solution:
    1- we will convert the number x to a string, 
    2 - spread the char to an array, reverse the array and transform the array back to string
-   3- 
+   3- because the number can be positive or negative, to avoid the negative sign being reverse, we need first need
+   to work with the absolute value of x
+   4- once we have the reverse value, first check if it meets the constrains: the reverse must also be a 32-bit integer
+   that is reverse must be less than 2^31
+
+   5- if the reverse number is not a 32-bit integer, return 0
+   6- if the previous condition is met, return the negative of the reverse number if x is negative
+   or the postive number if x is positive.
  */
 
 const reverse = function(x) {
