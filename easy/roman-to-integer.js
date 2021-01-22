@@ -50,3 +50,18 @@ Constraints:
 s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 It is guaranteed that s is a valid roman numeral in the range [1, 3999].
  */
+
+/*
+   Solution:
+   1- define an object roman storing the integer value for each roman letter
+   2- initialize the integer to be return and set it to 0: let int = 0
+   3- loop over each char of the iput
+   4- knowing that the input will always be a valid roman number,
+   we will check two adjacent char at the time: char at position i and char at position i+ 1
+       if the value of the char at position i in the roman object is less than the value of char at 
+       position i+1, add the difference of char at i +1 and char at i to the int variable
+       else, add the value of char at i postion to the int variable.
+
+   5 - return the int variable
+
+ */
