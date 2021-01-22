@@ -65,3 +65,23 @@ It is guaranteed that s is a valid roman numeral in the range [1, 3999].
    5 - return the int variable
 
  */
+
+const romanToInt = function(s) {
+    const roman = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+    let int = 0;
+
+    for (let i = 0; i < s.length; i++) {
+        const next = roman[s[i + 1]]
+        const curr = roman[s[i]]
+        if (next && next > curr) {
+            int += (next - curr);
+            i++
+        } else {
+            int += curr
+        };
+
+
+    }
+
+    return int
+};
