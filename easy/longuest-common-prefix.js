@@ -33,3 +33,18 @@ strs[i] consists of only lower-case English letters.
    -if it is, set the previously define variable equal to the substring, if not continue
   - return the varialble defined
  */
+
+const longestCommonPrefix = function(strs) {
+
+    let prefix = '';
+    if (strs.length === 0) return prefix;
+    const shortestString = strs.sort((a, b) => a.length - b.length)[0] //(O(nlogn))
+    console.log(shortestString.length)
+    for (let i = 1; i <= shortestString.length; i++) {
+        if (strs.every(char => char.startsWith(shortestString.substring(0, i)))) {
+            prefix = shortestString.substring(0, i)
+        }
+    } // (O(n^2))
+
+    return prefix;
+};
