@@ -128,6 +128,27 @@ class LinkedList {
         return -1
     };
 
+    // update an element in the list O(n)
+    update(oldData, newData) {
+        if (this.isEmpty()) {
+            return false
+        }
+        //initialize current node
+        let current = this.getFirst();
+        while (current) {
+            // check if the current node value === the oldData
+            if (current.data === oldData) {
+                current.data = newData
+                return current;
+            };
+            // move to the next node if no match
+            current = current.next;
+        };
+
+        // return false if oldData not found
+        return false
+    }
+
     // remove an element from the list O(n)
     delete(data) {
         // return false if the list is empty
